@@ -1,0 +1,22 @@
+import pygame
+from Settings import settings
+from Ship import ship
+import sys
+
+def run_game():
+    pygame.init()
+    ai_settings = settings()
+    screen = pygame.display.set_mode((ai_settings.screen_width,ai_settings.screen_height))
+    pygame.display.set_caption('BattleShip Begins')
+    # new_ship = ship()
+    new_ship = ship(screen)
+    bg_color = (ai_settings.bg_color)
+
+    while True:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                sys.exit()
+        screen.fill(bg_color)
+        new_ship.blitme()
+        pygame.display.flip()
+run_game()
